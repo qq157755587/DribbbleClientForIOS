@@ -11,8 +11,9 @@
 
 @interface Shot : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic) NSNumber *id;
+@property (nonatomic) NSNumber *shotId;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *content;
 @property (nonatomic) NSNumber *width;
 @property (nonatomic) NSNumber *height;
 @property (nonatomic, strong) Images *images;

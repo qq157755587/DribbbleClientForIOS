@@ -11,7 +11,13 @@
 @implementation Shot
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
-    return [NSDictionary mtl_identityPropertyMapWithModel:self];
+    return @{
+        @"shotId": @"id",
+        @"title": @"title",
+        @"content": @"description",
+        @"width": @"width",
+        @"images": @"images"
+    };
 }
 
 + (NSValueTransformer *)imagesJSONTransformer {

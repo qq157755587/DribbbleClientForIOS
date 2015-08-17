@@ -10,19 +10,22 @@
 #import "AFDribbbleAPIClient.h"
 #import "Mantle.h"
 #import "Shot.h"
+#import <Foundation/Foundation.h>
 
 static NSString *const BASE_URL = @"https://api.dribbble.com/v1/";
 static NSString *const TOKEN = @"Bearer 8aac5e2678da4b5dda86f5c558d6b7e368d138ba5df7fe8e3c351bb640e68721";
 
 @interface ShotsListTableViewController ()
 
-
 @end
 
 @implementation ShotsListTableViewController
 
+NSMutableArray* shots;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    shots = [[NSMutableArray alloc] init];
     [self loadShotsFromNetwork];
 }
 
@@ -38,18 +41,17 @@ static NSString *const TOKEN = @"Bearer 8aac5e2678da4b5dda86f5c558d6b7e368d138ba
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return shots.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShotIdentity" forIndexPath:indexPath];
     
-    // Configure the cell...
+    Shot *shot = shots[indexPath.row];
+    [cell.textLabel setText:shot.title];
     
     return cell;
 }
-*/
 
 #pragma mark - Restful operation
 
@@ -58,10 +60,12 @@ static NSString *const TOKEN = @"Bearer 8aac5e2678da4b5dda86f5c558d6b7e368d138ba
         NSArray *jsonArray = (NSArray *) responseObject;
         NSError *error = nil;
         NSArray *shotsArray = [MTLJSONAdapter modelsOfClass:Shot.class fromJSONArray:jsonArray error:&error];
-        NSLog(@"Length %lu", (unsigned long)shotsArray.count);
-        Shot *shot = shotsArray[0];
-        NSLog(@"Images %@", shot.images);
-        NSLog(@"Error %@", error);
+        if (error == nil) {
+            [shots addObjectsFromArray:shotsArray];
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"ERROR %@", error);
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"ERROR %@", error);
     }];
