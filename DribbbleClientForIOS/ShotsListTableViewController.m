@@ -10,10 +10,7 @@
 #import "AFDribbbleAPIClient.h"
 #import "Mantle.h"
 #import "Shot.h"
-#import <Foundation/Foundation.h>
-
-static NSString *const BASE_URL = @"https://api.dribbble.com/v1/";
-static NSString *const TOKEN = @"Bearer 8aac5e2678da4b5dda86f5c558d6b7e368d138ba5df7fe8e3c351bb640e68721";
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ShotsListTableViewController ()
 
@@ -49,6 +46,7 @@ NSMutableArray* shots;
     
     Shot *shot = shots[indexPath.row];
     [cell.textLabel setText:shot.title];
+    [cell.imageView sd_setImageWithURL:shot.images.teaser];
     
     return cell;
 }
