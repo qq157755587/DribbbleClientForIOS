@@ -14,6 +14,8 @@
 		271587511B7EE74D006D923F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2715874F1B7EE74D006D923F /* LaunchScreen.xib */; };
 		2715875D1B7EE74D006D923F /* DribbbleClientForIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715875C1B7EE74D006D923F /* DribbbleClientForIOSTests.m */; };
 		271587681B7EE85A006D923F /* ShotsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271587671B7EE85A006D923F /* ShotsListTableViewController.m */; };
+		27677E321B81D5C300BFA612 /* Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 27677E311B81D5C300BFA612 /* Images.m */; };
+		27CD26A51B81C51700ADA39F /* Shot.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CD26A41B81C51700ADA39F /* Shot.m */; };
 		27E165FF1B7F3D2100D7907C /* AFDribbbleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E165FE1B7F3D2100D7907C /* AFDribbbleAPIClient.m */; };
 		54FB9C8B16AAE61DBE637D79 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF9CC21CC753A4DEE3B96A1 /* libPods.a */; };
 		73898107B08E38BDE1EF306E /* libPods-DribbbleClientForIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A8B762DFFE34A02E45912 /* libPods-DribbbleClientForIOS.a */; };
@@ -46,6 +48,10 @@
 		271587661B7EE85A006D923F /* ShotsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotsListTableViewController.h; sourceTree = "<group>"; };
 		271587671B7EE85A006D923F /* ShotsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotsListTableViewController.m; sourceTree = "<group>"; };
 		271587691B7F1AE4006D923F /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		27677E301B81D5C300BFA612 /* Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Images.h; sourceTree = "<group>"; };
+		27677E311B81D5C300BFA612 /* Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Images.m; sourceTree = "<group>"; };
+		27CD26A31B81C51700ADA39F /* Shot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shot.h; sourceTree = "<group>"; };
+		27CD26A41B81C51700ADA39F /* Shot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shot.m; sourceTree = "<group>"; };
 		27E165FD1B7F3D2100D7907C /* AFDribbbleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDribbbleAPIClient.h; sourceTree = "<group>"; };
 		27E165FE1B7F3D2100D7907C /* AFDribbbleAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDribbbleAPIClient.m; sourceTree = "<group>"; };
 		27E166001B7F430800D7907C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 		2715873F1B7EE74D006D923F /* DribbbleClientForIOS */ = {
 			isa = PBXGroup;
 			children = (
+				27CD26A21B81C4BB00ADA39F /* Models */,
 				271587441B7EE74D006D923F /* AppDelegate.h */,
 				271587451B7EE74D006D923F /* AppDelegate.m */,
 				2715874A1B7EE74D006D923F /* Main.storyboard */,
@@ -151,6 +158,17 @@
 				2715875B1B7EE74D006D923F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27CD26A21B81C4BB00ADA39F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27CD26A31B81C51700ADA39F /* Shot.h */,
+				27CD26A41B81C51700ADA39F /* Shot.m */,
+				27677E301B81D5C300BFA612 /* Images.h */,
+				27677E311B81D5C300BFA612 /* Images.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		74D5BFB7BF25F18CF5274287 /* Pods */ = {
@@ -331,8 +349,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27CD26A51B81C51700ADA39F /* Shot.m in Sources */,
 				271587681B7EE85A006D923F /* ShotsListTableViewController.m in Sources */,
 				271587461B7EE74D006D923F /* AppDelegate.m in Sources */,
+				27677E321B81D5C300BFA612 /* Images.m in Sources */,
 				27E165FF1B7F3D2100D7907C /* AFDribbbleAPIClient.m in Sources */,
 				271587431B7EE74D006D923F /* main.m in Sources */,
 			);

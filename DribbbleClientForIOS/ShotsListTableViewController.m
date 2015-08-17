@@ -8,6 +8,8 @@
 
 #import "ShotsListTableViewController.h"
 #import "AFDribbbleAPIClient.h"
+#import "Mantle.h"
+#import "Shot.h"
 
 static NSString *const BASE_URL = @"https://api.dribbble.com/v1/";
 static NSString *const TOKEN = @"Bearer 8aac5e2678da4b5dda86f5c558d6b7e368d138ba5df7fe8e3c351bb640e68721";
@@ -53,7 +55,13 @@ static NSString *const TOKEN = @"Bearer 8aac5e2678da4b5dda86f5c558d6b7e368d138ba
 
 - (void) loadShotsFromNetwork {
     [[AFDribbbleAPIClient sharedClient] GET:@"shots" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        NSArray *jsonArray = (NSArray *) responseObject;
+        NSError *error = nil;
+        NSArray *shotsArray = [MTLJSONAdapter modelsOfClass:Shot.class fromJSONArray:jsonArray error:&error];
+        NSLog(@"Length %lu", (unsigned long)shotsArray.count);
+        Shot *shot = shotsArray[0];
+        NSLog(@"Images %@", shot.images);
+        NSLog(@"Error %@", error);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"ERROR %@", error);
     }];
