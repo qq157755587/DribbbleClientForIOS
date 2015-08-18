@@ -14,6 +14,7 @@
 		271587511B7EE74D006D923F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2715874F1B7EE74D006D923F /* LaunchScreen.xib */; };
 		2715875D1B7EE74D006D923F /* DribbbleClientForIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715875C1B7EE74D006D923F /* DribbbleClientForIOSTests.m */; };
 		271587681B7EE85A006D923F /* ShotsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271587671B7EE85A006D923F /* ShotsListTableViewController.m */; };
+		2752E4B01B82E7BD001481BA /* ShotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752E4AE1B82E7BD001481BA /* ShotTableViewCell.m */; };
 		27677E321B81D5C300BFA612 /* Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 27677E311B81D5C300BFA612 /* Images.m */; };
 		27CD26A51B81C51700ADA39F /* Shot.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CD26A41B81C51700ADA39F /* Shot.m */; };
 		27E165FF1B7F3D2100D7907C /* AFDribbbleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E165FE1B7F3D2100D7907C /* AFDribbbleAPIClient.m */; };
@@ -48,6 +49,8 @@
 		271587661B7EE85A006D923F /* ShotsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotsListTableViewController.h; sourceTree = "<group>"; };
 		271587671B7EE85A006D923F /* ShotsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotsListTableViewController.m; sourceTree = "<group>"; };
 		271587691B7F1AE4006D923F /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2752E4AD1B82E7BD001481BA /* ShotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShotTableViewCell.h; sourceTree = "<group>"; };
+		2752E4AE1B82E7BD001481BA /* ShotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotTableViewCell.m; sourceTree = "<group>"; };
 		27677E301B81D5C300BFA612 /* Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Images.h; sourceTree = "<group>"; };
 		27677E311B81D5C300BFA612 /* Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Images.m; sourceTree = "<group>"; };
 		27CD26A31B81C51700ADA39F /* Shot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shot.h; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 		2715873F1B7EE74D006D923F /* DribbbleClientForIOS */ = {
 			isa = PBXGroup;
 			children = (
+				2752E4AC1B82E102001481BA /* Views */,
 				27CD26A21B81C4BB00ADA39F /* Models */,
 				271587441B7EE74D006D923F /* AppDelegate.h */,
 				271587451B7EE74D006D923F /* AppDelegate.m */,
@@ -158,6 +162,15 @@
 				2715875B1B7EE74D006D923F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2752E4AC1B82E102001481BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2752E4AD1B82E7BD001481BA /* ShotTableViewCell.h */,
+				2752E4AE1B82E7BD001481BA /* ShotTableViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		27CD26A21B81C4BB00ADA39F /* Models */ = {
@@ -351,6 +364,7 @@
 			files = (
 				27CD26A51B81C51700ADA39F /* Shot.m in Sources */,
 				271587681B7EE85A006D923F /* ShotsListTableViewController.m in Sources */,
+				2752E4B01B82E7BD001481BA /* ShotTableViewCell.m in Sources */,
 				271587461B7EE74D006D923F /* AppDelegate.m in Sources */,
 				27677E321B81D5C300BFA612 /* Images.m in Sources */,
 				27E165FF1B7F3D2100D7907C /* AFDribbbleAPIClient.m in Sources */,

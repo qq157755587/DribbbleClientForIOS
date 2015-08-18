@@ -10,11 +10,15 @@
 #import "AFDribbbleAPIClient.h"
 #import "Mantle.h"
 #import "Shot.h"
+#import "ShotTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ShotsListTableViewController ()
 
 @end
+
+static NSString *const CELL_IDENTITY =@"ShotIdentity";
+static NSString *const NIB_NAME = @"ShotTableViewCell";
 
 @implementation ShotsListTableViewController
 
@@ -42,11 +46,11 @@ NSMutableArray* shots;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShotIdentity" forIndexPath:indexPath];
+    ShotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTITY forIndexPath:indexPath];
     
     Shot *shot = shots[indexPath.row];
-    [cell.textLabel setText:shot.title];
-    [cell.imageView sd_setImageWithURL:shot.images.teaser];
+    [cell.title setText:shot.title];
+    [cell.image sd_setImageWithURL:shot.images.teaser];
     
     return cell;
 }
