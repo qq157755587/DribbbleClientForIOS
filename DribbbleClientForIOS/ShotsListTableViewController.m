@@ -15,6 +15,8 @@
 
 @interface ShotsListTableViewController ()
 
+@property (nonatomic) CGFloat rowHeight;
+
 @end
 
 static NSString *const CELL_IDENTITY =@"ShotIdentity";
@@ -26,6 +28,7 @@ NSMutableArray* shots;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.rowHeight = [self heightForRow];
     shots = [[NSMutableArray alloc] init];
     [self loadShotsFromNetwork];
 }
@@ -53,6 +56,21 @@ NSMutableArray* shots;
     [cell.image sd_setImageWithURL:shot.images.teaser];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.rowHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.rowHeight;
+}
+
+- (CGFloat)heightForRow {
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    CGFloat width = rect.size.width;
+    CGFloat imageHeight = (width - 16) * 3 / 4;
+    return imageHeight + 8 * 3 + 28;
 }
 
 #pragma mark - Restful operation
