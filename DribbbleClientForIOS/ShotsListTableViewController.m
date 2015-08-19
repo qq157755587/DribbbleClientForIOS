@@ -73,9 +73,14 @@ NSMutableArray* shots;
     return imageHeight + 8 * 3 + 28;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self performSegueWithIdentifier:@"ShotsListToDetail" sender:self];
+}
+
 #pragma mark - Restful operation
 
-- (void) loadShotsFromNetwork {
+- (void)loadShotsFromNetwork {
     [[AFDribbbleAPIClient sharedClient] GET:@"shots" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *jsonArray = (NSArray *) responseObject;
         NSError *error = nil;
