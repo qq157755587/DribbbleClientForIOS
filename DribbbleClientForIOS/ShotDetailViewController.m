@@ -7,6 +7,7 @@
 //
 
 #import "ShotDetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ShotDetailViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:self.shot.title];
+    [self.content setText:self.shot.content];
+    [self.image sd_setImageWithURL:self.shot.images.normal];
 }
 
 - (void)didReceiveMemoryWarning {

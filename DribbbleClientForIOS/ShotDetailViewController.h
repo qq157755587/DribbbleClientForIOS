@@ -11,6 +11,8 @@
 
 @interface ShotDetailViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (strong, nonatomic) IBOutlet UILabel *content;
 @property (nonatomic, strong) Shot *shot;
 
 @end

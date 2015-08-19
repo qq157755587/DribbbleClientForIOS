@@ -80,9 +80,35 @@
                     <view key="view" contentMode="scaleToFill" id="4af-Bw-9Sx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OBg-rE-Mgi">
+                                <rect key="frame" x="8" y="72" width="584" height="438"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OBg-rE-Mgi" secondAttribute="height" multiplier="4:3" id="SLH-U3-cNO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krf-Y3-nbq">
+                                <rect key="frame" x="8" y="518" width="584" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OBg-rE-Mgi" secondAttribute="trailing" constant="8" id="4Jj-1r-eNw"/>
+                            <constraint firstItem="Krf-Y3-nbq" firstAttribute="leading" secondItem="4af-Bw-9Sx" secondAttribute="leading" constant="8" id="ONV-EI-YO4"/>
+                            <constraint firstItem="Krf-Y3-nbq" firstAttribute="top" secondItem="OBg-rE-Mgi" secondAttribute="bottom" constant="8" id="PiF-v9-WXI"/>
+                            <constraint firstAttribute="trailing" secondItem="Krf-Y3-nbq" secondAttribute="trailing" constant="8" id="iB7-eU-2Ko"/>
+                            <constraint firstItem="OBg-rE-Mgi" firstAttribute="top" secondItem="zFL-75-wYU" secondAttribute="bottom" constant="8" id="taC-Cr-dOv"/>
+                            <constraint firstItem="OBg-rE-Mgi" firstAttribute="leading" secondItem="4af-Bw-9Sx" secondAttribute="leading" constant="8" id="vSc-Wv-Ad8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="DiJ-Jm-B0E"/>
+                    <connections>
+                        <outlet property="content" destination="Krf-Y3-nbq" id="cAh-mw-Rkf"/>
+                        <outlet property="image" destination="OBg-rE-Mgi" id="WSf-0z-Og3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNa-nl-ikN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
