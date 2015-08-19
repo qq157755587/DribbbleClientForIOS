@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Shot.h"
 
 @interface ShotDetailViewController : UIViewController
+
+@property (nonatomic, strong) Shot *shot;
 
 @end
