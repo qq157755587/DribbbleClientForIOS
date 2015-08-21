@@ -53,7 +53,7 @@ NSMutableArray* shots;
     
     Shot *shot = shots[indexPath.row];
     [cell.title setText:shot.title];
-    [cell.image sd_setImageWithURL:shot.images.normal];
+    [cell.image sd_setImageWithURL:[NSURL URLWithString:shot.images.normal]];
     
     return cell;
 }

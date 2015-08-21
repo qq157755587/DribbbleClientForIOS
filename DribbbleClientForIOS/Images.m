@@ -14,16 +14,16 @@
     return [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
-+ (NSValueTransformer *)hidpiJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
-
-+ (NSValueTransformer *)normalJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
-
-+ (NSValueTransformer *)teaserJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
+//+ (NSValueTransformer *)hidpiJSONTransformer {
+//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+//}
+//
+//+ (NSValueTransformer *)normalJSONTransformer {
+//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+//}
+//
+//+ (NSValueTransformer *)teaserJSONTransformer {
+//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+//}
 
 @end

@@ -10,8 +10,8 @@
 
 @interface Images : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, copy) NSURL *hidpi;
-@property (nonatomic, copy) NSURL *normal;
-@property (nonatomic, copy) NSURL *teaser;
+@property (nonatomic, copy) NSString *hidpi;
+@property (nonatomic, copy) NSString *normal;
+@property (nonatomic, copy) NSString *teaser;
 
 @end
