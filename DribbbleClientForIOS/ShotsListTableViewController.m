@@ -30,6 +30,7 @@ NSMutableArray* shots;
     [super viewDidLoad];
     self.rowHeight = [self heightForRow];
     shots = [[NSMutableArray alloc] init];
+    [self loadShotsFromUserDefault];
     [self loadShotsFromNetwork];
 }
 
@@ -88,12 +89,24 @@ NSMutableArray* shots;
         if (error == nil) {
             [shots addObjectsFromArray:shotsArray];
             [self.tableView reloadData];
+            [self saveShotsToUserDefault];
         } else {
             NSLog(@"ERROR %@", error);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"ERROR %@", error);
     }];
+}
+
+- (void)loadShotsFromUserDefault {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"shots"];
+    shots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    [self.tableView reloadData];
+}
+
+- (void)saveShotsToUserDefault {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:shots];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"shots"];
 }
 
 #pragma mark - Navigation
