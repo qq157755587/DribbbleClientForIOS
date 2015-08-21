@@ -15,8 +15,6 @@
 
 @interface ShotsListTableViewController ()
 
-@property (nonatomic) CGFloat rowHeight;
-
 @end
 
 static NSString *const CELL_IDENTITY =@"ShotIdentity";
@@ -25,12 +23,19 @@ static NSString *const NIB_NAME = @"ShotTableViewCell";
 @implementation ShotsListTableViewController
 
 NSMutableArray* shots;
+CGFloat rowHeight;
+UIRefreshControl *refreshControl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.rowHeight = [self heightForRow];
+    rowHeight = [self heightForRow];
     shots = [[NSMutableArray alloc] init];
     [self loadShotsFromUserDefault];
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(loadShotsFromNetwork) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:refreshControl];
+    [refreshControl beginRefreshing];
     [self loadShotsFromNetwork];
 }
 
@@ -60,11 +65,11 @@ NSMutableArray* shots;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.rowHeight;
+    return rowHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.rowHeight;
+    return rowHeight;
 }
 
 - (CGFloat)heightForRow {
@@ -86,6 +91,7 @@ NSMutableArray* shots;
         NSArray *jsonArray = (NSArray *) responseObject;
         NSError *error = nil;
         NSArray *shotsArray = [MTLJSONAdapter modelsOfClass:Shot.class fromJSONArray:jsonArray error:&error];
+        [refreshControl endRefreshing];
         if (error == nil) {
             [shots addObjectsFromArray:shotsArray];
             [self.tableView reloadData];
