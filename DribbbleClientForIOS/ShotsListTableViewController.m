@@ -18,7 +18,6 @@
 @end
 
 static NSString *const CELL_IDENTITY =@"ShotIdentity";
-static NSString *const NIB_NAME = @"ShotTableViewCell";
 
 @implementation ShotsListTableViewController
 
