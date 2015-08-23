@@ -20,10 +20,11 @@
 static NSString *const CELL_IDENTITY =@"ShotIdentity";
 
 @implementation ShotsListTableViewController
-
-NSMutableArray* shots;
-CGFloat rowHeight;
-UIRefreshControl *refreshControl;
+{
+    NSArray* shots;
+    CGFloat rowHeight;
+    UIRefreshControl *refreshControl;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +93,7 @@ UIRefreshControl *refreshControl;
         NSArray *shotsArray = [MTLJSONAdapter modelsOfClass:Shot.class fromJSONArray:jsonArray error:&error];
         [refreshControl endRefreshing];
         if (error == nil) {
-            [shots addObjectsFromArray:shotsArray];
+            shots = shotsArray;
             [self.tableView reloadData];
             [self saveShotsToUserDefault];
         } else {
@@ -105,7 +106,10 @@ UIRefreshControl *refreshControl;
 
 - (void)loadShotsFromUserDefault {
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"shots"];
-    shots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSArray * localShots = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    if (localShots != nil) {
+        shots = localShots;
+    }
     [self.tableView reloadData];
 }
 
