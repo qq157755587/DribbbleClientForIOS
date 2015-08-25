@@ -17,6 +17,7 @@
 		2752E4B01B82E7BD001481BA /* ShotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752E4AE1B82E7BD001481BA /* ShotTableViewCell.m */; };
 		2752E4B41B846AD2001481BA /* ShotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752E4B31B846AD2001481BA /* ShotDetailViewController.m */; };
 		27677E321B81D5C300BFA612 /* Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 27677E311B81D5C300BFA612 /* Images.m */; };
+		276F92F41B8B53F900ADA710 /* BouncePresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F92F31B8B53F900ADA710 /* BouncePresentAnimation.m */; };
 		27CD26A51B81C51700ADA39F /* Shot.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CD26A41B81C51700ADA39F /* Shot.m */; };
 		27E165FF1B7F3D2100D7907C /* AFDribbbleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E165FE1B7F3D2100D7907C /* AFDribbbleAPIClient.m */; };
 		54FB9C8B16AAE61DBE637D79 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF9CC21CC753A4DEE3B96A1 /* libPods.a */; };
@@ -56,6 +57,8 @@
 		2752E4B31B846AD2001481BA /* ShotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShotDetailViewController.m; sourceTree = "<group>"; };
 		27677E301B81D5C300BFA612 /* Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Images.h; sourceTree = "<group>"; };
 		27677E311B81D5C300BFA612 /* Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Images.m; sourceTree = "<group>"; };
+		276F92F21B8B53F900ADA710 /* BouncePresentAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouncePresentAnimation.h; sourceTree = "<group>"; };
+		276F92F31B8B53F900ADA710 /* BouncePresentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouncePresentAnimation.m; sourceTree = "<group>"; };
 		27CD26A31B81C51700ADA39F /* Shot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shot.h; sourceTree = "<group>"; };
 		27CD26A41B81C51700ADA39F /* Shot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shot.m; sourceTree = "<group>"; };
 		27E165FD1B7F3D2100D7907C /* AFDribbbleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDribbbleAPIClient.h; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		2715873F1B7EE74D006D923F /* DribbbleClientForIOS */ = {
 			isa = PBXGroup;
 			children = (
+				276F92F11B8B53DB00ADA710 /* Animations */,
 				2752E4AC1B82E102001481BA /* Views */,
 				27CD26A21B81C4BB00ADA39F /* Models */,
 				271587441B7EE74D006D923F /* AppDelegate.h */,
@@ -176,6 +180,15 @@
 				2752E4AE1B82E7BD001481BA /* ShotTableViewCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		276F92F11B8B53DB00ADA710 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				276F92F21B8B53F900ADA710 /* BouncePresentAnimation.h */,
+				276F92F31B8B53F900ADA710 /* BouncePresentAnimation.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		27CD26A21B81C4BB00ADA39F /* Models */ = {
@@ -373,6 +386,7 @@
 				271587461B7EE74D006D923F /* AppDelegate.m in Sources */,
 				27677E321B81D5C300BFA612 /* Images.m in Sources */,
 				2752E4B41B846AD2001481BA /* ShotDetailViewController.m in Sources */,
+				276F92F41B8B53F900ADA710 /* BouncePresentAnimation.m in Sources */,
 				27E165FF1B7F3D2100D7907C /* AFDribbbleAPIClient.m in Sources */,
 				271587431B7EE74D006D923F /* main.m in Sources */,
 			);

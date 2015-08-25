@@ -7,14 +7,15 @@
 //
 
 #import "ShotsListTableViewController.h"
+#import "BouncePresentAnimation.h"
 #import "AFDribbbleAPIClient.h"
 #import "Mantle.h"
 #import "Shot.h"
 #import "ShotTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface ShotsListTableViewController ()
-
+@interface ShotsListTableViewController ()<UINavigationControllerDelegate>
+@property (nonatomic, strong) BouncePresentAnimation *presentAnimation;
 @end
 
 static NSString *const CELL_IDENTITY =@"ShotIdentity";
@@ -24,6 +25,13 @@ static NSString *const CELL_IDENTITY =@"ShotIdentity";
     NSArray* shots;
     CGFloat rowHeight;
     UIRefreshControl *refreshControl;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self == [super initWithCoder:aDecoder]) {
+        self.presentAnimation = [[BouncePresentAnimation alloc] init];
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -125,7 +133,17 @@ static NSString *const CELL_IDENTITY =@"ShotIdentity";
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Shot *shot = shots[indexPath.row];
         [segue.destinationViewController setValue:shot forKey:@"shot"];
+        [segue.sourceViewController navigationController].delegate = self;
     }
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    if (operation == UINavigationControllerOperationPush) {
+        return self.presentAnimation;
+    }
+    return nil;
 }
 
 @end
