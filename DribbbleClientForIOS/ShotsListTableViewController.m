@@ -7,15 +7,15 @@
 //
 
 #import "ShotsListTableViewController.h"
-#import "BouncePresentAnimation.h"
 #import "AFDribbbleAPIClient.h"
 #import "Mantle.h"
 #import "Shot.h"
 #import "ShotTableViewCell.h"
+#import "ShotDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface ShotsListTableViewController ()<UINavigationControllerDelegate>
-@property (nonatomic, strong) BouncePresentAnimation *presentAnimation;
+@interface ShotsListTableViewController ()
+
 @end
 
 static NSString *const CELL_IDENTITY =@"ShotIdentity";
@@ -25,13 +25,6 @@ static NSString *const CELL_IDENTITY =@"ShotIdentity";
     NSArray* shots;
     CGFloat rowHeight;
     UIRefreshControl *refreshControl;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self == [super initWithCoder:aDecoder]) {
-        self.presentAnimation = [[BouncePresentAnimation alloc] init];
-    }
-    return self;
 }
 
 - (void)viewDidLoad {
@@ -88,8 +81,10 @@ static NSString *const CELL_IDENTITY =@"ShotIdentity";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"ShotsListToDetail" sender:self];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    ShotDetailViewController *dvc = (ShotDetailViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ShotDetailViewController"];
+    dvc.shot = shots[indexPath.row];
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 #pragma mark - Restful operation
@@ -124,26 +119,6 @@ static NSString *const CELL_IDENTITY =@"ShotIdentity";
 - (void)saveShotsToUserDefault {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:shots];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"shots"];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController respondsToSelector:NSSelectorFromString(@"setShot:")]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Shot *shot = shots[indexPath.row];
-        [segue.destinationViewController setValue:shot forKey:@"shot"];
-        [segue.sourceViewController navigationController].delegate = self;
-    }
-}
-
-#pragma mark - UINavigationControllerDelegate
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
-    if (operation == UINavigationControllerOperationPush) {
-        return self.presentAnimation;
-    }
-    return nil;
 }
 
 @end
